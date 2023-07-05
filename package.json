@@ -1,7 +1,15 @@
 {
 	"name": "dbdapi",
-	"version": "0.1.0",
+	"version": "0.2.2",
 	"description": "Get data from deadbydaylight.com",
+	"keywords": [
+		"deadbydaylight",
+		"dbd"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/secchanu/dbdapi.git"
+	},
 	"license": "MIT",
 	"author": "secchanu",
 	"main": "dist/index.js",
