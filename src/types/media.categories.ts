@@ -1,4 +1,4 @@
-type MediaCategories = MediaCategory[];
+export type MediaCategories = MediaCategory[];
 
 interface MediaCategory {
 	slug: string;

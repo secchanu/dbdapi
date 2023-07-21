@@ -1,20 +1,39 @@
-type Characters = Character[];
-
-interface Character {
-	id: string;
-	title: string;
-	locale: string;
+export type ArticleDetail = {
 	slug: string;
-	difficulty?: string;
-	inclusion: string;
-	role: string;
-	description: string;
-	releaseDate: string;
-	previewMode?: boolean;
-	headshot: Headshot;
+	title: string;
+	content: string;
+	locale: string;
+	published_at: string;
+	publication_date?: string;
+	localizations: Localization[];
+	metadata: Metadata;
+	article_category: ArticleCategory;
+	image: Image;
+};
+
+interface Localization {
+	id: string;
+	locale: string;
 }
 
-interface Headshot {
+interface Metadata {
+	metaDescription: string;
+	metaTitle: string;
+	shareImage?: ShareImage;
+}
+
+interface ShareImage {
+	alternativeText: string;
+	url: string;
+}
+
+interface ArticleCategory {
+	name: string;
+	id: string;
+	slug: string;
+}
+
+interface Image {
 	alternativeText: string;
 	url: string;
 	localFile: LocalFile;

@@ -1,4 +1,4 @@
-type Chapters = Chapter[];
+export type Chapters = Chapter[];
 
 interface Chapter {
 	id: string;

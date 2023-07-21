@@ -15,18 +15,19 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"start": "node dist/index.js",
 		"build": "tsc",
 		"clean": "del-cli dist",
 		"dev": "ts-node --files src/index.ts",
 		"format": "run-s format:prettier format:sort-package-json",
 		"format:prettier": "prettier \"**/*.{ts,tsx,json,html,yml,css,scss,md}\" --check --write",
 		"format:sort-package-json": "sort-package-json",
+		"prepare": "npm run build",
+		"prepublish": "npm run clean && npm run build",
+		"start": "node dist/index.js",
 		"test": "run-s test:lint test:prettier test:types",
 		"test:lint": "eslint --ext .ts .",
 		"test:prettier": "prettier \"**/*.{ts,tsx,json,html,yml,css,scss,md}\" --check",
-		"test:types": "tsc -b",
-		"prepare": "npm run build"
+		"test:types": "tsc --noEmit"
 	},
 	"dependencies": {
 		"axios": "^1.4.0"

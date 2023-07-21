@@ -1,4 +1,4 @@
-type ChapterDetail = {
+export type ChapterDetail = {
 	id: string;
 	chapterNumber: string;
 	contentOverview: string;

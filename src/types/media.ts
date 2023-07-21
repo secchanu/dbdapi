@@ -1,4 +1,4 @@
-type Media = Medium[];
+export type Media = Medium[];
 
 interface Medium {
 	titleEN: string;

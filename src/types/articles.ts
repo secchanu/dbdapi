@@ -1,4 +1,4 @@
-type Articles = Article[];
+export type Articles = Article[];
 
 interface Article {
 	id: string;

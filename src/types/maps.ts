@@ -1,4 +1,4 @@
-type Maps = Map[];
+export type Maps = Map[];
 
 interface Map {
 	id: string;

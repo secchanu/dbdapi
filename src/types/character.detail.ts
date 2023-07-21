@@ -1,4 +1,4 @@
-type CharacterDetail =
+export type CharacterDetail =
 	| undefined
 	| {
 			id: string;
