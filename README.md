@@ -1,7 +1,5 @@
 # dbdapi
 
-[![npm version](https://badge.fury.io/js/dbdapi.svg)](https://badge.fury.io/js/dbdapi)
-
 [deadbydaylight.com](https://deadbydaylight.com/)からデータを取得します
 
 ## インストール
@@ -18,19 +16,19 @@ npm install dbdapi
 import { getCharacters, getCharacter } from "dbdapi"; //import
 
 (async () => {
-	const characters = await getCharacters(); //キャラクター一覧を取得
-	const survivors = characters.filter((char) => char.role === "survivor"); //サバイバーのみにフィルタ
+  const characters = await getCharacters(); //キャラクター一覧を取得
+  const survivors = characters.filter((char) => char.role === "survivor"); //サバイバーのみにフィルタ
 
-	const parks = (
-		await Promise.all(
-			survivors.map(async (surv) => {
-				const survivor = await getCharacter(surv.slug, "ja"); //slugからキャラクターの詳細を取得
-				return survivor?.powerPerks;
-			}),
-		)
-	).flat();
+  const parks = (
+    await Promise.all(
+      survivors.map(async (surv) => {
+        const survivor = await getCharacter(surv.slug, "ja"); //slugからキャラクターの詳細を取得
+        return survivor?.powerPerks;
+      }),
+    )
+  ).flat();
 
-	console.log(parks); //表示
+  console.log(parks); //表示
 })();
 ```
 

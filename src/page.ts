@@ -25,7 +25,7 @@ export const getChapters = async (lang: Language = "en") => {
 	const result = pageData.result;
 	const chaptersData = result.pageContext.postsData.chapters;
 	const chapters = chaptersData.edges.map((edge: any) => edge.node);
-	return chapters;
+	return chapters as Chapters;
 };
 
 export const getChapter = async (slug: string, lang: Language = "en") => {
@@ -34,7 +34,7 @@ export const getChapter = async (slug: string, lang: Language = "en") => {
 	if (!pageData) return undefined;
 	const result = pageData.result;
 	const chapter = result.data.pageData;
-	return chapter;
+	return chapter as ChapterDetail;
 };
 
 export const getCharacters = async (lang: Language = "en") => {
@@ -44,7 +44,7 @@ export const getCharacters = async (lang: Language = "en") => {
 	const result = pageData.result;
 	const charactersData = result.pageContext.postsData.characters;
 	const characters = charactersData.edges.map((edge: any) => edge.node);
-	return characters;
+	return characters as Characters;
 };
 
 export const getCharacter = async (slug: string, lang: Language = "en") => {
@@ -53,7 +53,7 @@ export const getCharacter = async (slug: string, lang: Language = "en") => {
 	if (!pageData) return undefined;
 	const result = pageData.result;
 	const character = result.data.pageData;
-	return character;
+	return character as CharacterDetail;
 };
 
 export const getMaps = async (lang: Language = "en") => {
@@ -63,7 +63,7 @@ export const getMaps = async (lang: Language = "en") => {
 	const result = pageData.result;
 	const mapsData = result.pageContext.postsData.maps;
 	const maps = mapsData.edges.map((edge: any) => edge.node);
-	return maps;
+	return maps as Maps;
 };
 
 export const getArticles = async (lang: Language = "en") => {
@@ -73,7 +73,16 @@ export const getArticles = async (lang: Language = "en") => {
 	const result = pageData.result;
 	const articlesData = result.pageContext.postsData.articles;
 	const articles = articlesData.edges.map((edge: any) => edge.node);
-	return articles;
+	return articles as Articles;
+};
+
+export const getArticle = async (slug: string, lang: Language = "en") => {
+	const path = `/news/${slug}/`;
+	const pageData = await getPageData(path, lang);
+	if (!pageData) return undefined;
+	const result = pageData.result;
+	const article = result.data.pageData;
+	return article as ArticleDetail;
 };
 
 export const getArticlesCategories = async (lang: Language = "en") => {
@@ -86,16 +95,7 @@ export const getArticlesCategories = async (lang: Language = "en") => {
 	const articlesCategories = articlesCategoriesData.edges.map(
 		(edge: any) => edge.node,
 	);
-	return articlesCategories;
-};
-
-export const getArticle = async (slug: string, lang: Language = "en") => {
-	const path = `/news/${slug}/`;
-	const pageData = await getPageData(path, lang);
-	if (!pageData) return undefined;
-	const result = pageData.result;
-	const article = result.data.pageData;
-	return article;
+	return articlesCategories as ArticlesCategories;
 };
 
 export const getMedia = async () => {
@@ -105,7 +105,7 @@ export const getMedia = async () => {
 	const result = pageData.result;
 	const mediaData = result.pageContext.postsData.media;
 	const media = mediaData.edges.map((edge: any) => edge.node);
-	return media;
+	return media as Media;
 };
 
 export const getMediaCategories = async () => {
@@ -117,5 +117,5 @@ export const getMediaCategories = async () => {
 	const mediaCategories = mediaCategoriesData.edges.map(
 		(edge: any) => edge.node,
 	);
-	return mediaCategories;
+	return mediaCategories as MediaCategories;
 };
